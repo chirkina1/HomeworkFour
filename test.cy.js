@@ -8,9 +8,20 @@ describe('Parametrized tests', () => {
             cy.get('.menu-item.ng-tns-c141-11 > .ng-star-inserted > .menu-title').click();
             cy.get('.form-inline > [placeholder="Email"]').type(`${testData}`);
             cy.get('.form-inline > [placeholder="Email"]').should("contain.value", `${expectedResult}`)
+
+            cy.get('a.ng-tns-c141-9').click();
+            cy.get('.menu-item.ng-tns-c141-11 > .ng-star-inserted > .menu-title').click();
+            cy.get('#exampleInputEmail1').type(`${testData}`);
+            cy.get('#exampleInputEmail1').should("contain.value", `${expectedResult}`)
+
+
           }
      
     it(`search data`, paramTest({testData: 1, expectedResult: 1}))
+
+    it(`search data`, paramTest({testData: 2, expectedResult: 2}))
+      
+
     
     })
     
@@ -22,13 +33,9 @@ describe('Parametrized tests', () => {
             function () {
               cy.visit('https://sanitarskyi-ngx-admin.herokuapp.com/');
               cy.get('nb-card-header:contains("Material Dark")').click();
-              cy.get('a.ng-tns-c141-9').click();
-              cy.get('.menu-item.ng-tns-c141-11 > .ng-star-inserted > .menu-title').click();
-              cy.get('#exampleInputEmail1').type(`${testData}`);
-              cy.get('#exampleInputEmail1').should("contain.value", `${expectedResult}`)
+             
             }
        
-      it(`search data`, paramTest({testData: 2, expectedResult: 2}))
       
       })
     
